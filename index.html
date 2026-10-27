@@ -53,8 +53,37 @@
     </section>
     </div>
     <p class="footer"><a href="punktitabel.html">Ava kahe mängija punktitabel</a></p>
+    <details class="extras">
+        <summary>Lisaülesanded: loendur, galerii ja ülesanded</summary>
+        <div class="extras-grid">
+            <section aria-labelledby="counter-heading">
+                <h2 id="counter-heading">Treeninguklikid</h2>
+                <button id="click-counter" type="button">Vajutusi: 0</button>
+                <p id="counter-status" role="status">Alusta loendamist.</p>
+            </section>
+            <section aria-labelledby="gallery-heading">
+                <h2 id="gallery-heading">Pildigalerii</h2>
+                <img id="gallery-image" src="image.jpg" alt="Kaks sportlast võistlevad käesurumises">
+                <button id="previous-image" type="button">Eelmine pilt</button>
+                <button id="next-image" type="button">Järgmine pilt</button>
+                <p id="gallery-status" role="status">Pilt 1 / 2</p>
+            </section>
+            <section aria-labelledby="todo-heading">
+                <h2 id="todo-heading">Minu ülesanded</h2>
+                <form id="todo-form">
+                    <label for="todo-input">Uus ülesanne</label>
+                    <input id="todo-input" maxlength="120" required autocomplete="off">
+                    <button type="submit">Lisa ülesanne</button>
+                </form>
+                <ul id="todo-list"></ul>
+                <p id="todo-status" role="status">Ülesandeid pole veel lisatud.</p>
+            </section>
+        </div>
+    </details>
 </main>
+    <script src="script.js" defer></script>
 </body>
 </html>
+
 
 
