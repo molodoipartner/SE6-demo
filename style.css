@@ -31,3 +31,11 @@ body { background: #edf3f5; }
     h1 { font-size: 2rem; }
     th, td { padding: 0.4rem; }
 }
+/* Lisaülesanne: CSS-animatsioon ilma JavaScriptita */
+a, button, img { transition: transform 180ms ease, box-shadow 180ms ease; }
+img:hover { transform: translateY(-3px); box-shadow: 0 12px 26px #0003; }
+button:hover { transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) {
+    a, button, img { transition: none; }
+    img:hover, button:hover { transform: none; }
+}
