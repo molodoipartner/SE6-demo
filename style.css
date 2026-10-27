@@ -9,3 +9,5 @@ p { margin: 0 0 1rem; }
 a { color: #075985; text-underline-offset: 0.2em; }
 a:hover { color: #9a3412; }
 li { margin-bottom: 0.3rem; }
+/* 2d: pildi raam ja vari */
+img { display: block; width: 100%; max-height: 230px; object-fit: contain; border: 3px solid #fff; border-radius: 12px; box-shadow: 0 8px 22px #0002; background: #e2e8f0; }
