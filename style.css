@@ -19,3 +19,15 @@ thead { background: #164e63; color: white; }
 tbody tr:nth-child(even) { background: #eaf2f5; }
 /* 2f: taust */
 body { background: #edf3f5; }
+/* 2g: kaks tulpa arvutis, üks tulp kitsal ekraanil */
+* { box-sizing: border-box; }
+.page { max-width: 1100px; margin: 0 auto; padding: 24px; }
+.columns { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; }
+.columns > section { min-width: 0; padding: 20px; background: #fff; border-radius: 16px; }
+.footer { margin-top: 16px; }
+@media (max-width: 700px) {
+    .columns { grid-template-columns: 1fr; }
+    .page { padding: 16px; }
+    h1 { font-size: 2rem; }
+    th, td { padding: 0.4rem; }
+}
