@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Käesurumine — punktitabel</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            font-family: system-ui, sans-serif;
+            background: #101827;
+            color: #f8fafc;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            display: grid;
+            place-items: center;
+            padding: 24px;
+            background: radial-gradient(circle at top, #263b5b, #101827 65%);
+        }
+
+        main {
+            width: min(100%, 680px);
+            padding: clamp(24px, 6vw, 48px);
+            text-align: center;
+            background: #182438;
+            border: 1px solid #33445f;
+            border-radius: 24px;
+            box-shadow: 0 24px 70px #0005;
+        }
+
+        h1 { margin: 0 0 8px; font-size: clamp(2rem, 7vw, 3.5rem); }
+        .intro { margin: 0 0 32px; color: #b7c5d9; }
+
+        .scoreboard {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .player { padding: 20px 12px; background: #22324b; border-radius: 16px; }
+        .player h2 { margin: 0; font-size: 1.1rem; }
+        .score { margin: 8px 0 16px; font-size: 4rem; font-weight: 800; line-height: 1; }
+        .versus { color: #94a3b8; font-weight: 700; }
+
+        button {
+            min-height: 44px;
+            padding: 10px 16px;
+            border: 0;
+            border-radius: 10px;
+            background: #f97316;
+            color: #fff;
+            font: inherit;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        button:hover { background: #ea580c; }
+        button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+        .reset { margin-top: 24px; background: #33445f; }
+        .reset:hover { background: #405574; }
+        #status { min-height: 1.5em; margin: 20px 0 0; color: #fdba74; }
+
+        @media (max-width: 480px) {
+            .scoreboard { gap: 8px; }
+            .player { padding: 16px 8px; }
+            .score { font-size: 3rem; }
+            button { padding-inline: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>💪 Käesurumine</h1>
+        <p class="intro">Sõbralik punktitabel kahele mängijale</p>
+
+        <section class="scoreboard" aria-label="Mängu punktitabel">
+            <div class="player">
+                <h2>Mängija 1</h2>
+                <p class="score" id="score-1" aria-live="polite">0</p>
+                <button type="button" data-player="1">Lisa punkt</button>
+            </div>
+            <span class="versus" aria-hidden="true">VS</span>
+            <div class="player">
+                <h2>Mängija 2</h2>
+                <p class="score" id="score-2" aria-live="polite">0</p>
+                <button type="button" data-player="2">Lisa punkt</button>
+            </div>
+        </section>
+
+        <p id="status" role="status">Valmis mängima?</p>
+        <button class="reset" id="reset" type="button">Alusta uuesti</button>
+    </main>
+
+    <script>
+        const scores = [0, 0];
+        const status = document.querySelector('#status');
+
+        document.querySelectorAll('[data-player]').forEach((button) => {
+            button.addEventListener('click', () => {
+                const player = Number(button.dataset.player);
+                scores[player - 1] += 1;
+                document.querySelector(`#score-${player}`).textContent = scores[player - 1];
+                status.textContent = `Mängija ${player} sai punkti!`;
+            });
+        });
+
+        document.querySelector('#reset').addEventListener('click', () => {
+            scores[0] = 0;
+            scores[1] = 0;
+            document.querySelector('#score-1').textContent = '0';
+            document.querySelector('#score-2').textContent = '0';
+            status.textContent = 'Punktid lähtestatud. Valmis mängima?';
+        });
+    </script>
+</body>
+</html>
